@@ -1,0 +1,1142 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>DBMS_CODES</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="edbbd048-57a1-4fd0-a1f4-91dbbd829945" class="page mono"><header><div class="page-header-icon undefined"><span class="icon">💥</span></div><h1 class="page-title">DBMS_CODES</h1></header><div class="page-body"><h1 id="a7fb2933-fa93-47dd-8d30-14b023c17427" class="">Assignment 2a</h1><pre id="38923d62-3e9a-4eb4-92cb-0c2f5f190c5d" class="code"><code>CREATE TABLE student_info(
+      rollno INT PRIMARY KEY,
+      name VARCHAR(255) NOT NULL,
+      email VARCHAR(255)
+);
+
+desc student_info;
+
+CREATE VIEW view_student_info as (
+    select rollno from student_info
+);
+
+desc view_student_info;
+
+-- like this index is created
+CREATE INDEX ind_name ON student_info(name);
+
+-- like this we can delete index
+DROP INDEX ind_name;
+
+
+ CREATE TABLE info(
+     id INT PRIMARY KEY,
+     rollno INT NOT NULL,
+     name VARCHAR(255)
+);
+
+---- sequence
+CREATE TABLE info_main(
+     id_seq INT PRIMARY KEY,
+     rollno INT NOT NULL,
+     name VARCHAR(255)
+);
+
+
+CREATE SEQUENCE id_seq
+    INCREMENT BY 1
+    START WITH 1
+    MINVALUE 1
+    MAXVALUE 100
+    CYCLE
+    CACHE 2;
+
+
+
+INSERT INTO info_main (id_seq,rollno, name) VALUES (id_seq.NEXTVAL,&#x27;081&#x27;,&#x27;mihir&#x27;);
+INSERT INTO info_main (id_seq,rollno, name) VALUES (id_seq.NEXTVAL,&#x27;082&#x27;,&#x27;megha&#x27;);
+INSERT INTO info_main (id_seq,rollno, name) VALUES (id_seq.NEXTVAL,&#x27;083&#x27;,&#x27;sanket&#x27;);
+
+select * from info_main;
+
+
+-- synonym is replica of the StudentInfo table
+CREATE synonym student for student_info;
+
+desc student;
+
+
+SELECT * FROM info;</code></pre><p id="a0fa3568-209a-4ad8-b32b-cdaa87ca8dc9" class="">
+</p><h1 id="653fb44f-8a56-472a-807d-f3ec0e3f1f08" class="">Assignment 2b</h1><pre id="964e253b-f095-4c4b-8d07-7b35c1297469" class="code"><code>CREATE TABLE Stu_info (
+id INT PRIMARY KEY,
+rollno INT NOT NULL,
+name varchar(255),
+email varchar(255)
+);
+
+INSERT INTO Stu_info (id,rollno,name,email) VALUES (&#x27;1&#x27;,&#x27;81&#x27;,&#x27;mihir&#x27;,&#x27;mihir@gmail.com&#x27;);
+INSERT INTO Stu_info (id,rollno,name,email) VALUES (&#x27;2&#x27;,&#x27;82&#x27;,&#x27;megha&#x27;,&#x27;megha@gmail.com&#x27;);
+INSERT INTO Stu_info (id,rollno,name,email) VALUES (&#x27;3&#x27;,&#x27;22&#x27;,&#x27;Garry&#x27;,&#x27;garry@gmail.com&#x27;);
+INSERT INTO Stu_info (id,rollno,name,email) VALUES (&#x27;4&#x27;,&#x27;98&#x27;,&#x27;madhur&#x27;,&#x27;madhur@gmail.com&#x27;);
+INSERT INTO Stu_info (id,rollno,name,email) VALUES (&#x27;5&#x27;,&#x27;95&#x27;,&#x27;mohit&#x27;,&#x27;mohit@gmail.com&#x27;);
+
+SELECT * FROM Stu_info ORDER BY id ASC;
+SELECT name,email FROM Stu_info WHERE rollno=&#x27;82&#x27;;
+SELECT * FROM Stu_info WHERE email=&#x27;garry@gmail.com&#x27; AND  rollno=&#x27;22&#x27;
+
+
+desc Stu_info;
+
+
+UPDATE Stu_info
+	SET name = &#x27;Lokesh&#x27;,email = &#x27;lokesh@gmail.com&#x27;
+    WHERE id = 4;
+
+DELETE FROM Stu_info WHERE name= &#x27;megha&#x27; OR rollno=&#x27;82&#x27;;
+DELETE FROM Stu_info WHERE name=&#x27;Garry&#x27; AND rollno=&#x27;22&#x27;;
+
+UPDATE Stu_info
+     SET name = &#x27;sanket&#x27;,email = &#x27;sanket@gmail.com&#x27;
+     WHERE id = 1 AND rollno= &#x27;81&#x27;;</code></pre><p id="02766538-a42b-4a81-832c-c6fd841bdeaf" class="">
+</p><h1 id="cd1c6855-543b-4ac1-9a8d-f77f73d70421" class="">Assignment 3</h1><pre id="fd6bd4da-da44-43a4-860f-968f7d91824f" class="code"><code>-- SQL Queries – all types of Join, Sub-Query and
+-- View:
+-- Design at least 10 SQL queries for suitable database
+-- application using SQL DML statements: all types of
+-- Join,
+-- Sub-Query and View.
+
+
+CREATE TABLE Customer_table(
+id INT PRIMARY KEY,
+name VARCHAR(25) NOT NULL,
+salary float NOT NULL
+);
+
+INSERT INTO Customer_table (id,name,salary) VALUES (1,&#x27;Mohit&#x27;,500000);
+INSERT INTO Customer_table (id,name,salary) VALUES (2,&#x27;Ajay&#x27;,250000);
+INSERT INTO Customer_table (id,name,salary) VALUES (3,&#x27;Rutuja&#x27;,350000);
+INSERT INTO Customer_table (id,name,salary) VALUES (4,&#x27;Hemanshu&#x27;,353250);
+
+select * from Customer_table ORDER BY id ASC;
+
+CREATE TABLE Orders_table(
+     order_id INT PRIMARY KEY,
+     Customer_table_id INT REFERENCES Customer_table,
+     amount INT NOT NULL
+);
+
+desc Orders_table;
+
+INSERT INTO Orders_table VALUES(1,2,200);
+INSERT INTO Orders_table VALUES (2,2,1200);
+INSERT INTO Orders_table VALUES (3,3,2300);
+INSERT INTO Orders_table VALUES (4,4,2100);
+INSERT INTO Orders_table VALUES(5,1,100);
+
+SELECT * FROM Orders_table ORDER BY order_id ASC;
+
+-- INNER JOIN
+SELECT name,salary,amount
+FROM Customer_table
+INNER JOIN Orders_table
+ON Customer_table.id = Orders_table.Customer_table_id;
+
+-- LEFT JOIN
+SELECT name,salary,amount
+FROM Customer_table
+LEFT JOIN Orders_table
+ON Customer_table.id = Orders_table.Customer_table_id;
+
+-- RIGHT JOIN
+SELECT name,salary,amount
+FROM Customer_table
+RIGHT JOIN Orders_table
+ON Customer_table.id = Orders_table.Customer_table_id;
+
+
+-- FULL JOIN
+SELECT name,salary,amount
+FROM Customer_table
+FULL JOIN Orders_table
+ON id = Orders_table.Customer_table_id;
+
+--  This are sub querys
+
+SELECT name
+FROM Customer_table
+WHERE id
+IN (SELECT Customer_table_id FROM Orders_table);
+
+UPDATE Customer_table
+SET salary=salary+1000
+WHERE id
+IN (SELECT Customer_table_id FROM Orders_table);
+
+SELECT * FROM Customer_table;</code></pre><p id="b224fc77-1113-454f-a29c-5f4e06be5cef" class="">
+</p><h1 id="fe4ba63d-859c-45dd-9c0d-85531134a47d" class="">Assignment 4</h1><pre id="19e8ebbc-4f32-45c8-bb15-325a51c71a85" class="code"><code>--  exception added
+CREATE TABLE  BORROWER
+(
+roll_no NUMBER,
+name VARCHAR2(25),
+dateofissue DATE,
+name_of_book VARCHAR2(25),
+status VARCHAR2(20)
+);
+
+CREATE TABLE FINE
+(
+roll_no NUMBER,
+date_of_return DATE,
+amt NUMBER
+);
+
+INSERT INTO borrower VALUES(54,&#x27;SUDARSHAN&#x27;,TO_DATE(&#x27;01-10-2022&#x27;,&#x27;DD-MM-YYYY&#x27;),&#x27;HARRY POTTER&#x27;,&#x27;I&#x27;);
+
+INSERT INTO borrower VALUES(56,&#x27;SUMIT&#x27;,TO_DATE(&#x27;15-10-2022&#x27;,&#x27;DD-MM-YYYY&#x27;),&#x27;DARK MATTER&#x27;,&#x27;I&#x27;);
+
+INSERT INTO borrower VALUES(68,&#x27;MANDAR&#x27;,TO_DATE(&#x27;24-09-2022&#x27;,&#x27;DD-MM-YYYY&#x27;),&#x27;SILENT HILL&#x27;,&#x27;I&#x27;);
+
+INSERT INTO borrower VALUES(66,&#x27;SIDDHAM&#x27;,TO_DATE(&#x27;26-08-2022&#x27;,&#x27;DD-MM-YYYY&#x27;),&#x27;GOD OF WAR&#x27;,&#x27;I&#x27;);
+
+INSERT INTO borrower VALUES(50,&#x27;SHREYAS&#x27;,TO_DATE(&#x27;09-09-2022&#x27;,&#x27;DD-MM-YYYY&#x27;),&#x27;SPIDER-MAN&#x27;,&#x27;I&#x27;);
+
+INSERT INTO borrower VALUES(51,&#x27;SHREYA&#x27;,TO_DATE(&#x27;09-12-2022&#x27;,&#x27;DD-MM-YYYY&#x27;),&#x27;SPIDER&#x27;,&#x27;I&#x27;);
+
+
+DECLARE
+	i_roll_no NUMBER;
+	name_of_book VARCHAR2(25);
+	no_of_days NUMBER;
+	return_date DATE := TO_DATE(SYSDATE,&#x27;DD-MM-YYYY&#x27;);
+	temp NUMBER;
+	doi DATE;   -- this is date of issue
+	fine NUMBER:=0;
+    NEG_DAYS exception;
+
+BEGIN
+
+	i_roll_no := :i_roll_no;  --  this is user input user will put roll no and the name of book
+	name_of_book := :name_of_book;
+
+    -- this is query to find date of issue of certain book
+	SELECT to_date(borrower.dateofissue,&#x27;DD-MM-YYYY&#x27;) INTO doi
+        FROM borrower
+        WHERE borrower.roll_no = i_roll_no
+        AND borrower.name_of_book = name_of_book;
+
+-- this is to find no of days between return date and date of issue
+        no_of_days := return_date-doi;
+
+-- this is to check if no of days is negative
+	IF (no_of_days&lt;0) THEN
+        raise NEG_DAYS;
+        END IF;
+        dbms_output.put_line(no_of_days);
+	IF (no_of_days &gt;15 AND no_of_days &lt;=30) THEN
+		fine := 5*(no_of_days-15);
+
+	ELSIF (no_of_days&gt;30 ) THEN
+		temp := no_of_days-30; -- first 30 will charge only 5 rs per day then  50 rupess per day start
+		fine := 75 + temp*50;
+	END IF;
+	dbms_output.put_line(fine);
+	IF (fine&gt;0) THEN
+        INSERT INTO fine VALUES(i_roll_no,return_date,fine);
+        END IF;
+
+        UPDATE borrower SET status = &#x27;R&#x27; WHERE borrower.roll_no = i_roll_no;
+		-- this is to update the status of book to returned R means RETURN I means ISSUED
+EXCEPTION
+        WHEN NEG_DAYS THEN
+	DBMS_OUTPUT.PUT_LINE(&#x27;NEGATIVE DAYS NOT EXCEPTED&#x27;);
+        when NO_DATA_FOUND then
+             dbms_output.put_line(&#x27;no_data_found&#x27;);
+        when OTHERS then
+             dbms_output.put_line(&#x27;some_error_found&#x27;);
+END;
+
+SELECT * FROM FINE
+SELECT * FROM BORROWER
+
+DROP TABLE FINE
+DROP TABLE BORROWER</code></pre><p id="ffdee44a-5045-4622-83f8-bcbab4572cfc" class="">
+</p><h1 id="4e910d9c-c8b1-47b6-b0e7-47291106d95d" class="">Assignment 5</h1><pre id="f0f910f8-575e-404f-abfd-92da2b3680c6" class="code"><code>CREATE TABLE Circle(
+	radius NUMBER,
+	area NUMBER
+); -- table to store radius &amp; area
+
+DECLARE
+	radius_var NUMBER;
+	area_var NUMBER;
+	pi NUMBER := 3.14;
+BEGIN
+	FOR radius_var IN 5 .. 9 LOOP
+		area_var := pi*radius_var*radius_var;
+		dbms_output.put_line(area_var);
+		INSERT INTO Circle VALUES (radius_var,area_var);
+	END LOOP;
+
+END;
+/
+
+SELECT * FROM Circle;</code></pre><p id="ed5be03b-3259-4548-a5d7-09f617628d9f" class="">
+</p><h1 id="d8725a6a-177c-4960-bcd8-d32151e4f2bb" class="">Assignment 6</h1><pre id="a8870559-bf9e-4c28-ab85-42df3407bd63" class="code"><code>CREATE TABLE STUDENT_MARKS_FINAL
+(
+FullName VARCHAR2(25),
+total_marks NUMBER
+);
+
+CREATE TABLE STUDENT_RESULTS
+(
+roll_number NUMBER ,
+FullName VARCHAR2(25),
+class VARCHAR2(30)
+);
+
+
+CREATE OR REPLACE PROCEDURE procedure_1
+(roll_no IN NUMBER, FullName IN VARCHAR2 ,marks IN NUMBER)
+AS
+BEGIN
+	IF (marks&lt;=1500 and marks&gt;=990) THEN
+		DBMS_OUTPUT.PUT_LINE (roll_no||&#x27; - &#x27;||FullName||&#x27; : DISTINCTION&#x27;);
+        INSERT INTO STUDENT_RESULTS VALUES (roll_no,FullName,&#x27;DISTINCTION&#x27;);
+	ELSIF (marks&lt;=989 and marks&gt;=900) THEN
+		DBMS_OUTPUT.PUT_LINE (roll_no||&#x27; - &#x27;||FullName||&#x27; : FIRST CLASS&#x27;);
+        INSERT INTO STUDENT_RESULTS VALUES (roll_no,FullName,&#x27;FIRST CLASS&#x27;);
+	ELSIF (marks&lt;=899 and marks&gt;825) THEN
+		DBMS_OUTPUT.PUT_LINE(roll_no||&#x27; - &#x27;||FullName||&#x27; : HIGHER SECOND CLASS&#x27;);
+        INSERT INTO STUDENT_RESULTS VALUES (roll_no,FullName,&#x27;HIGHER SECOND CLASS&#x27;);
+	ELSE
+		DBMS_OUTPUT.PUT_LINE (roll_no||&#x27; - &#x27;||FullName||&#x27; : FAIL&#x27;);
+        INSERT INTO STUDENT_RESULTS VALUES (roll_no,FullName,&#x27;FAIL&#x27;);
+	END IF;
+    	INSERT INTO STUDENT_MARKS_FINAL VALUES (FullName,marks);
+END procedure_1;
+
+BEGIN
+	procedure_1(1,&#x27;Garry&#x27;,80);
+	procedure_1(2,&#x27;Abbas &#x27;,20);
+	procedure_1(3,&#x27;Sohum &#x27;,50);
+	procedure_1(4,&#x27;Itachi &#x27;,70);
+END;</code></pre><p id="8837a475-51dd-4ef5-ae4d-d94f2fad4bfb" class="">
+</p><h1 id="625581db-1efd-406b-bcc7-0848dc618388" class="">Assignment 7</h1><pre id="8818c51c-3c73-448a-9303-07898517d84e" class="code"><code>CREATE TABLE Cust_New
+(
+Name VARCHAR2(15)
+);
+
+INSERT INTO Cust_New VALUES (&#x27;ABC&#x27;);
+
+CREATE TABLE Cust_Old
+(
+Name VARCHAR2(15)
+);
+
+INSERT INTO Cust_Old VALUES (&#x27;ABC&#x27;);
+INSERT INTO Cust_Old VALUES (&#x27;PQR&#x27;);
+INSERT INTO Cust_Old VALUES (&#x27;XYZ&#x27;);
+
+DECLARE
+CURSOR cur1 IS
+SELECT Name from Cust_Old;
+
+CURSOR cur2 IS
+SELECT Name from Cust_New;
+
+R VARCHAR(15);
+C_Name VARCHAR(15);
+
+BEGIN
+OPEN cur1;
+OPEN cur2;
+
+LOOP
+Fetch cur1 into C_Name;
+Fetch cur2 into R;
+
+EXIT WHEN cur1%FOUND = FALSE;
+IF R &lt;&gt; C_Name THEN
+INSERT INTO Cust_New VALUES (C_Name);
+END IF;
+END LOOP;
+CLOSE cur1;
+END;
+
+
+SELECT * FROM Cust_New;</code></pre><p id="0c6b314f-76ed-40f7-a06c-5792cf010d0d" class="">
+</p><h1 id="74584b96-a473-4898-91b1-52d672e7ac91" class="">Assignment 8</h1><pre id="54690301-d85e-4393-8612-f51d3bb1368f" class="code"><code>-- the values in backup table are inserted only when the update or delete operation happen on Library
+CREATE TABLE Library
+(
+Book_Id NUMBER(5),
+Book_Name VARCHAR2(20),
+Book_Type VARCHAR2(20),
+Issued_By VARCHAR2(20)
+);
+
+INSERT INTO Library VALUES (1,&#x27;Harry Potter&#x27;,&#x27;Fiction&#x27;,&#x27;Garry&#x27;);
+INSERT INTO Library VALUES (2,&#x27;The Alchemist&#x27;,&#x27;Fiction&#x27;,&#x27;Abbas&#x27;);
+INSERT INTO Library VALUES (3,&#x27;The Monk Who Sold His Ferrari&#x27;,&#x27;Fiction&#x27;,&#x27;Sohum&#x27;);
+INSERT INTO Library VALUES (4,&#x27;The Secret&#x27;,&#x27;Fiction&#x27;,&#x27;Itachi&#x27;);
+
+
+CREATE TABLE Back_UP
+(
+Book_Id NUMBER(5),
+Book_Name VARCHAR2(20),
+Book_Type VARCHAR2(20),
+Issued_By VARCHAR2(20)
+);
+
+
+CREATE TRIGGER Update_Rec
+AFTER UPDATE OR DELETE ON Library
+FOR EACH ROW
+BEGIN
+INSERT INTO Back_UP
+(Book_Id, Book_Name, Book_Type, Issued_By)
+VALUES
+(:old.Book_Id, :old.Book_Name, :old.Book_Type, :old.Issued_By);
+END;
+
+-- this will trigger the trigger method
+UPDATE Library
+SET Issued_By = &#x27;Eleven&#x27;
+WHERE Issued_By = &#x27;Itachi&#x27;;
+
+SELECT * FROM Back_UP;</code></pre><p id="7cd92dfc-7cf8-4bc1-a06e-96ae07a54b99" class="">
+</p><h1 id="744e2220-f38d-4798-bc9f-bd96073b01af" class="">Bank PL_SQL</h1><pre id="c7c04d67-844c-4ab6-9bc4-1f07929fa005" class="code"><code>CREATE TABLE Bank_Account(
+    Account_No NUMBER PRIMARY KEY ,
+    Balance NUMBER
+);
+
+INSERT INTO Bank_Account(Account_No,Balance) VALUES (101,5000);
+INSERT INTO Bank_Account(Account_No,Balance) VALUES (2,6000);
+INSERT INTO Bank_Account(Account_No,Balance) VALUES (1,200);
+INSERT INTO Bank_Account(Account_No,Balance) VALUES (3,800);
+INSERT INTO Bank_Account(Account_No,Balance) VALUES (11,1000);
+
+
+DECLARE
+temp_account_no NUMBER(5);
+temp_balance NUMBER(10);
+withdraw_amount NUMBER(10):=0;
+insufficient_balance EXCEPTION;
+
+BEGIN
+temp_account_no:=:temp_account_no;
+withdraw_amount:=:withdraw_amount;
+SELECT Balance INTO temp_balance FROM Bank_Account WHERE Account_No = temp_account_no;
+DBMS_OUTPUT.put_line(&#x27;Account No = &#x27; || temp_account_no || &#x27;Balance = &#x27; ||temp_balance);
+
+IF(temp_balance&lt;withdraw_amount) THEN
+RAISE insufficient_balance;
+END IF;
+temp_balance :=temp_balance-withdraw_amount;
+DBMS_OUTPUT.put_line(&#x27;Current Balance is: &#x27;||temp_balance);
+
+EXCEPTION WHEN insufficient_balance THEN
+DBMS_OUTPUT.put_line(&#x27;Insufficient Balance!&#x27;);
+END;
+/</code></pre><pre id="1df67f43-8939-4beb-b714-6b9f4f07327e" class="code"><code>Mongo-DB 1st Assignment (CRUD)
+
+use AssgFirst;
+db.dropDatabase();
+db.createCollection(&quot;Information&quot;);
+db.Information.insertOne({name:&quot;Garry&quot;,marks:97});
+db.Information.insertMany([{name:&quot;Garry&quot;,marks:97},{name:&quot;Devi&quot;,marks:87},{name:&quot;Ruby&quot;,marks:69},{name:&quot;Ram&quot;,marks:99}]);
+db.Information.find().pretty();
+db.Information.update({name:&quot;Ram&quot;},{$set:{name:&quot;Krishna&quot;}});
+db.Information.replaceOne({&quot;_id&quot;:ObjectId(&quot;63749ed1f19c503e449d9348&quot;)},{name:&quot;CarryBhai&quot;});
+db.Information.deleteOne({name:&quot;Garry&quot;});
+db.Information.deleteMany({name:&quot;Garry&quot;,name:&quot;Sam&quot;});
+db.Information.find({$and:[{name:&quot;Krishna&quot;},{marks:99}]}).pretty();
+db.Information.find({$nor:[{name:&quot;Krishna&quot;},{marks:99}]}).pretty();
+db.Information.find({$or:[{name:&quot;Krishna&quot;},{name:&quot;Devi&quot;}]}).pretty();</code></pre><pre id="52a57294-1a2f-4139-8b94-1f8763fab86c" class="code"><code>Mongo-DB 2nd Assignment (Aggregation &amp; Indexing)
+
+use AssgnSecond;
+db.createCollection(&quot;customers&quot;);
+db.customers.insertMany([{name:&quot;Harry&quot;,type:&quot;Developer&quot;},{name:&quot;Carry&quot;,type:&quot;Tester&quot;},{name:&quot;Garry&quot;,type:&quot;Developer&quot;},{name:&quot;Sohim&quot;,type:&quot;Tester&quot;},{name:&quot;Joe&quot;,type:&quot;Tester&quot;}]);
+db.customers.find();
+db.customers.aggregate([{$group:{_id:&quot;$type&quot;,category:{$sum:1}}}]);
+db.customers.createIndex({name:1},{name:&quot;Developer&#x27;s Names&quot;});
+db.customers.getIndexes()
+db.customers.dropIndex(&quot;Developer&#x27;s Names&quot;)</code></pre><pre id="4a0bf66f-37d1-42e6-a8f7-f4076d568608" class="code"><code>Mongo-DB 3rd Assignment (map &amp; reduce)
+
+•	use AssgnThird;
+
+•	db.createCollection(&quot;student_info&quot;);
+
+
+•	db.student_info.insertMany([{name:&quot;Lokesh&quot;,marks:99},{name:&quot;Ruturaj&quot;,marks:89},{name:&quot;Lokesh&quot;,marks:59},{name:&quot;Ruturaj&quot;,marks:76},{name:&quot;Lokesh&quot;,marks:76},{name:&quot;Ruturaj&quot;,marks:67}]);
+
+•	db.student_info.find().pretty();
+
+
+•	var map = function() {emit(this.name,this.marks);};
+
+•	var reduce = function(name,marks){return Array.sum(marks);};
+
+
+•	db.student_info.mapReduce( map,reduce,{out:&quot;Result&quot;} );
+
+•	db.Result.find().pretty();</code></pre><p id="2788c81c-20f4-4857-82af-a76b4759b2fa" class="">
+</p><p id="88baaf15-c13a-4e43-bdb4-7cb283add046" class="">
+</p></div></article></body></html>
